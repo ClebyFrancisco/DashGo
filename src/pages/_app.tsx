@@ -1,7 +1,13 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import { AppProps } from 'next/dist/shared/lib/router/router'
 import { SidebarDrawerProvider } from '../contexts/SidebarDrawerContext';
-import { theme } from '../styles/theme'
+import { makeServer } from '../services/mirage';
+import { theme } from '../styles/theme';
+
+
+if(process.env.NODE_ENV == 'development'){
+  makeServer();
+}
 
 
 function MyApp({ Component, pageProps }: AppProps) {
